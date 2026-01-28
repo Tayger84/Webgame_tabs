@@ -1,0 +1,42 @@
+from bs4 import BeautifulSoup
+
+def parse_alliance_snapshot(html_content: str) -> dict:
+    """
+    Mining data about countries and storing them as snapshot
+    
+    Return: snapshot of countries as dict
+    """
+    
+    soup = BeautifulSoup(html_content, 'lxml')
+    
+    # find the header for check correct page 
+    header = soup.find(['h1', 'h2', 'h3'], string=lambda t: t and "Detaily zemí aliance" in t) # find first "Detaily zemí aliance" in tag regadless on other characters
+    if not header:
+        return None
+    
+    # find first table after header "Detaily zemí aliance"
+    table = header.find_next("table")
+    rows = table.find_all("tr")
+    
+    # how many countries and storaged td in cells
+    cells = rows[0].find_all("td")
+    num_countries = len(cells) - 1
+    
+    # create format for country list(dict{})
+    countries = [ {} for _ in range(num_countries) ]
+    
+    # fill rows in the cel in dictionary
+    for row in rows:
+        cells = [ c.get_text(strip=True) for c in row.find_all("td") ]
+        
+        if not cells:
+            return None
+        
+        # header of the property of every country       
+        metric_name = cells[0]
+        
+        # fill countries via metric_name and cells values
+        for i in range(1, len(cells)):
+            countries[i-1][metric_name] = cells[i]
+            
+    return countries       # dictionary of the snapshot

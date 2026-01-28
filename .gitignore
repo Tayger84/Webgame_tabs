@@ -1,0 +1,47 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# --- Virtual envs ---
+.venv/
+.myenv/
+venv/
+ENV/
+env/
+
+# --- Environment / secrets ---
+.env
+.env.*
+*.env
+instance/
+config.py
+
+# --- Flask / uploads / runtime ---
+*.log
+uploads/
+tmp/
+
+# --- DB / SQLite ---
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# --- OS / IDE ---
+.DS_store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Build / packaging ---
+build/
+dist/
+*.egg-info/
+
