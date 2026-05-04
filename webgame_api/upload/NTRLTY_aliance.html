@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+<head>
+    <title>Public Webgame</title>
+    <meta name="verify-v1" content="9rTsjmErPUk74eonspwHbWaLjRLr1JVqQXNIPm0ypTA=">
+    <meta http-equiv="Content-Language" content="cs-CZ">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="styles/blue/style.css?7009" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/js.cookie.js"></script>
+    <script type="text/javascript" src="js/netteForms.js?7009"></script>
+    <script type="text/javascript" src="js/common.js?7009"></script>
+    <script type="text/javascript" src="js/clock.js?7009"></script>
+    <script type="text/javascript" src="js/open.js?7009"></script>
+
+    <script async type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-9CDT7DGT85"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9CDT7DGT85');
+    </script>
+</head>
+<body>
+<div id="page">
+    <!-- LEVE MENU -->
+        <div id="left_menu">
+            <ul class="menu">
+<li>
+<div><a href="index.php"><img src="styles/blue/leftmenu_logo.png"/></a></div>
+
+<!--zakomentovane hlavni menu -->
+
+<!-- -->
+<li><ul>
+	<li>
+	<a href="http://help.webgame.cz/" target="_blank">Help</a>	</li>
+	<li><a href="blok.php" onclick="wopen(); return false">Zápisník</a></li>
+</ul></li>
+
+<li><ul>
+	<li><a href="index.php?p=pracovna">Pracovna</a>
+</ul></li>
+
+<li><ul>
+	<li><a href="index.php?p=archiv">Archiv</a>
+	<li><a href="index.php?p=detaily">Detaily</a>
+</ul></li>
+
+<li><ul>
+	<li><a href="index.php?p=mail">Pošta</a>
+	<li><a href="index.php?p=forum">Fórum</a>
+	<li><a href="index.php?p=forum&amp;prefix=aliancni" title="Fórum - Alianční fórum" >A</a>|<a href="index.php?p=forum&amp;prefix=pokec" title="Fórum - Světové f." >S</a>|<a href="index.php?p=forum&amp;prefix=tematicke" title="Fórum - Tématické f." >T</a>|<a href="index.php?p=forum&amp;prefix=politika" title="Fórum - Politika" >P</a>|<a href="index.php?p=forum&amp;prefix=dotazy" title="Fórum - Dotazy" >D</a>
+</ul></li>
+
+<li><ul>
+	<li><a href="index.php?p=spojenectvi">Spojenectví</a>
+	<li><a href="index.php?p=aliance">Aliance</a>
+</ul></li>
+
+<li><ul>
+	<li><a href="index.php?p=najit">Najít</a>
+	<li><a href="index.php?p=zebricek" >Žebříček</a>
+	<li><a href="index.php?p=antimulti">Anti-Multi</a>
+</ul></li>
+<li><ul>
+<li>
+Přepnout zem: <br><span style="color: #55EE55; font-weight: bold;">1</span> | <a href="index.php?p=menu&amp;lchange=2">2</a> | <a href="index.php?p=menu&amp;lchange=3">3</a> | <a href="index.php?p=menu&amp;lchange=4">4</a></li></ul></li>
+
+<li><ul><li>
+<div id="time"><span id="clock"></span></div><div id="time2"><span id="clock_remain"></span></div>
+</li></ul>
+<br />
+<img src="/wg/img/logo.gif" />
+</li>
+<li><ul>
+	<li><a href="index.php?p=logout">Odhlásit</a>
+</ul></li>
+
+</ul>
+<script type="text/javascript">
+	var clock = new Clock("clock",1761471739,1000);
+	clock.start();
+</script>
+<script type="text/javascript">
+	var countDown = new CountDown("clock_remain",-739,1000);
+	countDown.start();
+</script>
+
+<br/>
+        </div>
+            <!-- LEVE MENU - END -->
+    <div id="content">
+        <!-- uMenu -->
+        <script type="text/javascript" src="js/icq.js"></script>
+<div id="uMenu"><ul>
+        <li><a href="index.php?p=aliance&amp;s=aliance">Přehled</a></li>
+        <li><a href="index.php?p=aliance&amp;s=asmlouvy">Smlouvy</a></li>
+        <li><a href="index.php?p=aliance&amp;s=apsmlouvy">[Uzav. smluv]</a></li>
+        <li><a href="index.php?p=aliance&amp;s=banka">Pokladna</a></li>
+        <li><a href="index.php?p=aliance&amp;s=apredsed">[Vedení]</a></li>
+        <li><a href="index.php?p=aliance&amp;s=awarview">[War View]</a></li>
+		<li><a href="index.php?p=aliance&amp;s=ahistory">Historie</a></li>
+        <li><a href="index.php?p=aliance&amp;s=aregistr">[Registr]</a></li>
+        <li><a href="index.php?p=aliance&amp;s=arecruit">Bezalianční</a></li>
+        </ul></div>
+
+        <!-- uMenu - END -->
+
+        <!-- LISTA -->
+<table id="uLista">
+  <tr>
+	<td class="rdata">
+	<img src="img/keep5.gif" title="114%" alt="114%" width=16 height=16> 	</td>
+	<td class="rdata">
+	<strong>52+0</strong>
+	<span style="color:#FF795F" title="Počet odehraných kol">(3924)</span>		<br>Země <a href="index.php?p=najit&amp;s=najitzem&amp;hid=171"><span style="color:#c5a200">#171</span></a><br>Aliance <a href="index.php?p=najit&amp;s=najittag&amp;tag=NTRLTY" style="color:#FF795F">[NTRLTY]</a>
+	</td>
+	<td class="rdata">
+	  <table align="center">
+	  <tr>
+		<td style="text-align:right"><strong>Peníze:</strong></td>
+		<td>538 438</td>
+		<td class="plus">
+		  +215 452</td>
+	  <tr>
+		<td style="text-align:right"><strong>Jídlo:</strong></td>
+		<td> 0</td>
+				<td class="minus">
+		  -2 780</td>  
+	  <tr>
+		<td><strong>Energie:</strong></td>
+		<td> 0</td>
+				<td class="minus">
+		  -9 614</td>  
+	  </table>
+	  </td>
+	  <td class="rdata">
+	  <table>
+		<tr>
+			<td><strong>Prestiž:</strong></td>
+			<td>2 912 492		</tr>	
+		<tr>
+			<td><strong>Rozloha:</strong></td>
+			<td> 18 431 km<sup>2</sup></td>
+		</tr>	
+		<tr>
+			<td colspan=2 >165v  99t 41s 8b 464m		</td></tr></table>
+	 <td >
+	  <table>
+		<tr>
+		<td><a href="index.php?p=rozvedka" style="color:#AAAA00">&nbsp;&nbsp;<strong>8</strong><img src="img/agent.gif" width=16 height=16 alt="Operace rozvědky" title="Operace rozvědky" ></a>		</tr>
+	  </table>
+	</td>
+	</table>
+
+		
+        <!-- LISTA - END -->
+
+        <!-- REKLAMA - TOP -->
+        <div align="center">
+</div>
+
+        <!-- REKLAMA - TOP - END -->
+
+        <!-- CONTENT -->
+<div class="container">
+    <div class="col-xs-12 col-full">
+        <br>	<table class="vis_tbl width90">
+	 <tr>
+	  <th>Věk skončil</th>
+	 </tr>
+	</table>
+	<div id="icontent"><h1>Neutrality</h1>
+				<table class="vis_tbl">
+				<tr>
+				 <th>On</th>
+				 <th>&nbsp;</th>
+				 <th>Země</th>
+				 <th>Rozloha</th>
+				 <th>Prestiž</th>
+				 <th>Hod</th>
+				 <th>Vláda</th>
+				 <th>Och-<br>rana</th>
+				 <th title="Spokojenost vašich lidí">Sp</th>
+				 <th width=10>&nbsp;</th>
+				 <th title="Počet kol, které má k hraní (včetně dočasně nepřístupných)">Kol</th>
+				 <th title="Síla jednotlivých druhů armády. Pořadí sloupců: vojáci, tanky, stíh., bunkry, mechy, agenti">Arm</th>
+				 <th title="Počet operací tajné služby, které muže provést">Op</th>
+				 <th title="Součet všech raket">Ra</th>
+                    <th title="Info o zemi">Info</th>
+                </tr>
+					<tr class="self">
+					<td><span class="on" title="Online">on</span></td>
+					<td>1.</td>
+					<td class="l"><a href="index.php?p=mail&amp;to_id=171"><img src="img/mail.gif" alt="Pošta" title="Pošta"></a>&nbsp;<a href="index.php?p=najit&amp;s=najitzem&amp;hid=171">Pojď sem, kam jdeš?(#171)</a><a href="index.php?p=najit&amp;s=najitzem&amp;hpid=14246" class="pname"> - Tayger</a></td>
+					<td>18431km<sup>2</sup></td>
+					<td class="score">2912492</td>
+					<td class="hodnost">(12)</td>
+					<td>Rep</td>
+					<td>-</td>
+					<td><img src="img/keep5.gif" title="114%" alt="114%" width=16 height=16> </td>
+					<td  style="padding:0;background-color: #00ff00" title='100%'>&nbsp;</td>
+					<td align="center">140+71</td>
+					<td class="armada"><img src=img/tr.gif width=5 height=11 alt=""><img src=img/ta.gif width=5 height=16 alt=""><img src=img/je.gif width=5 height=10 alt=""><img src=img/fo.gif width=5 height=2 alt=""><img src=img/me.gif width=5 height=16 alt="">&nbsp;<img src=img/ag.gif width=5 height=11 alt=""></td>
+					<td>8</td>
+					<td>1</td>
+                        <td><a href="index.php?p=detaily&s=detaily&sid=171"><img title="Detail" alt="Detail" src="img/agent.gif"></a>
+                        &nbsp;<a href="index.php?p=konflikty&hours_6=48&spec=6&land_6=171"><img title="Konflikty" alt="Konflikty" src="img/konflikty.gif"></a>
+                        &nbsp;<a href="index.php?p=archiv&tag=1&id=171"><img title="Archiv" alt="Archiv" src="img/filtr.gif"></a></td>
+                    </tr>
+					<tr class="vice">
+					<td><span  class="off" title='Off 15:24'>15h</span></td>
+					<td>2.</td>
+					<td class="l"><a href="index.php?p=mail&amp;to_id=1168"><img src="img/mail.gif" alt="Pošta" title="Pošta"></a>&nbsp;<a href="index.php?p=najit&amp;s=najitzem&amp;hid=1168">Skartovaná lama(#1168)</a><a href="index.php?p=najit&amp;s=najitzem&amp;hpid=48569" class="pname"> - Stalin2</a></td>
+					<td>16356km<sup>2</sup></td>
+					<td class="score">2665084</td>
+					<td class="hodnost">(11)</td>
+					<td>Demo</td>
+					<td>-</td>
+					<td><img src="img/keep6.gif" title="130%" alt="130%" width=16 height=16> </td>
+					<td  style="padding:0;background-color: #00ff00" title='100%'>&nbsp;</td>
+					<td align="center">140+19</td>
+					<td class="armada"><img src=img/tr.gif width=5 height=12 alt=""><img src=img/ta.gif width=5 height=5 alt=""><img src=img/je.gif width=5 height=16 alt=""><img src=img/fo.gif width=5 height=8 alt=""><img src=img/me.gif width=5 height=16 alt="">&nbsp;<img src=img/ag.gif width=5 height=11 alt=""></td>
+					<td>10</td>
+					<td>0</td>
+                        <td><a href="index.php?p=detaily&s=detaily&sid=1168"><img title="Detail" alt="Detail" src="img/agent.gif"></a>
+                        &nbsp;<a href="index.php?p=konflikty&hours_6=48&spec=6&land_6=1168"><img title="Konflikty" alt="Konflikty" src="img/konflikty.gif"></a>
+                        &nbsp;<a href="index.php?p=archiv&tag=1&id=1168"><img title="Archiv" alt="Archiv" src="img/filtr.gif"></a></td>
+                    </tr>
+					<tr class="vice">
+					<td><span  class="off" title='Off 15:18'>15h</span></td>
+					<td>3.</td>
+					<td class="l"><a href="index.php?p=mail&amp;to_id=1170"><img src="img/mail.gif" alt="Pošta" title="Pošta"></a>&nbsp;<a href="index.php?p=najit&amp;s=najitzem&amp;hid=1170">Skartovaná panna(#1170)</a><a href="index.php?p=najit&amp;s=najitzem&amp;hpid=48569" class="pname"> - Stalin2</a></td>
+					<td>18917km<sup>2</sup></td>
+					<td class="score">2486088</td>
+					<td class="hodnost">(12)</td>
+					<td>Dikt</td>
+					<td>-</td>
+					<td><img src="img/keep1.gif" title="75%" alt="75%" width=16 height=16> </td>
+					<td  style="padding:0;background-color: #00ff00" title='100%'>&nbsp;</td>
+					<td align="center">140+19</td>
+					<td class="armada"><img src=img/tr.gif width=5 height=9 alt=""><img src=img/ta.gif width=5 height=16 alt=""><img src=img/je.gif width=5 height=4 alt=""><img src=img/fo.gif width=5 height=4 alt=""><img src=img/me.gif width=5 height=16 alt="">&nbsp;<img src=img/ag.gif width=5 height=1 alt=""></td>
+					<td>25</td>
+					<td>1</td>
+                        <td><a href="index.php?p=detaily&s=detaily&sid=1170"><img title="Detail" alt="Detail" src="img/agent.gif"></a>
+                        &nbsp;<a href="index.php?p=konflikty&hours_6=48&spec=6&land_6=1170"><img title="Konflikty" alt="Konflikty" src="img/konflikty.gif"></a>
+                        &nbsp;<a href="index.php?p=archiv&tag=1&id=1170"><img title="Archiv" alt="Archiv" src="img/filtr.gif"></a></td>
+                    </tr>
+					<tr class="none">
+					<td><span  class="off" title='Off 38:27'>38h</span></td>
+					<td>4.</td>
+					<td class="l"><a href="index.php?p=mail&amp;to_id=182"><img src="img/mail.gif" alt="Pošta" title="Pošta"></a>&nbsp;<a href="index.php?p=najit&amp;s=najitzem&amp;hid=182">++Version*/=(#182)</a><a href="index.php?p=najit&amp;s=najitzem&amp;hpid=14246" class="pname"> - Tayger</a></td>
+					<td>14676km<sup>2</sup></td>
+					<td class="score">1984850</td>
+					<td class="hodnost">(12)</td>
+					<td>Fund</td>
+					<td>-</td>
+					<td><img src="img/keep6.gif" title="121%" alt="121%" width=16 height=16> </td>
+					<td  style="padding:0;background-color: #00ff00" title='100%'>&nbsp;</td>
+					<td align="center">140+87</td>
+					<td class="armada"><img src=img/tr.gif width=5 height=16 alt=""><img src=img/ta.gif width=5 height=6 alt=""><img src=img/je.gif width=5 height=1 alt=""><img src=img/fo.gif width=5 height=8 alt=""><img src=img/me.gif width=5 height=16 alt="">&nbsp;<img src=img/ag.gif width=5 height=14 alt=""></td>
+					<td>7</td>
+					<td>7</td>
+                        <td><a href="index.php?p=detaily&s=detaily&sid=182"><img title="Detail" alt="Detail" src="img/agent.gif"></a>
+                        &nbsp;<a href="index.php?p=konflikty&hours_6=48&spec=6&land_6=182"><img title="Konflikty" alt="Konflikty" src="img/konflikty.gif"></a>
+                        &nbsp;<a href="index.php?p=archiv&tag=1&id=182"><img title="Archiv" alt="Archiv" src="img/filtr.gif"></a></td>
+                    </tr>
+				<tr><td colspan=3 >Celková</td>
+				<td class="sum c" style="font-variant:normal">68380 km<sup>2</sup></td>
+				<td class="sum c" style="font-variant:normal"><strong>10048514</strong></td>
+				<td class="hodnost"><strong>(-)</strong></td></tr>
+				<tr class="sum c"><td colspan=3 class="sum c">Průměrná</td>
+				<td class="sum c" style="font-variant:normal">17095km<sup>2</sup></td>
+				<td class="sum c" style="font-variant:normal"><strong>2512129</strong></td></tr>
+				</table>
+			<table id="alliance-treaties-wars" class="vis_tbl" width=70% ><tr><th colspan=3>Aktuální války:</th></tr><tr><td class="valk" style="width:20%"><a href=index.php?p=najit&amp;s=najittag&amp;tag=NTRLTY>NTRLTY</a> ---&gt <a href=index.php?p=najit&amp;s=najittag&amp;tag=-%3DBN%3D->-=BN=-</a></td>
+	<td><strong class="valk">Právě vyhlášená válka</strong></td><td class="datum r">24.10. 14:13</td></table>	
+<h2>Alianční bonusy</h2>
+<p>Pro aktivaci aliančního bonusu za člena je potřeba, aby daná země měla minimálně <strong>600 000</strong> prestiže 
+nebo rozlohu alespoň <strong>5 640</strong> km2.</p><br />
+<table id="alliance-bonuses" class="vis_tbl">
+	<tr>
+		<th class="l">Název bonusu</th>
+		<th>Efekt bonusu</th>
+	</tr>
+	    <tr>
+    	<td class="l">Výdaje za armádu</td>
+    	<td class="plus">
+    		-6%    	</td>
+    </tr>
+        <tr>
+    	<td class="l">Peníze na 1 obyvatele</td>
+    	<td class="plus">
+    		+2%    	</td>
+    </tr>
+        <tr>
+    	<td class="l">Síla útoku a obrany</td>
+    	<td class="plus">
+    		+2%    	</td>
+    </tr>
+        <tr>
+    	<td class="l">Max. efekt hospodářských technologií</td>
+    	<td class="plus">
+    		+2%    	</td>
+    </tr>
+    </table>
+
+	
+<h2>Nástěnka</h2>
+<form action="index.php?p=aliance&amp;s=aliance" method="post">
+<table id="alliance-survey" class="vis_tbl">
+<tr>
+	<th>Naposledy změnil &nbsp; dne &nbsp;</th>
+	<td>
+	<a href=http:// target="_blank">http://</a>	
+	</td>
+	<td class="c">
+	&nbsp;	</td>
+	<td class="light40 c"><a href="index.php?p=aliance&amp;s=apool">Alianční anketa</a></td></tr>
+<tr><td colspan="4" class="c">
+<input class="submit" type="submit" name="action" value="Editovat"></td></tr>
+
+<tr><td colspan="4" id="nastenka"></td></tr></table>
+</form>
+
+
+
+<form name="leaving" action="index.php?p=aliance&amp;s=aliance" method="post">
+<input type="hidden" name="action" value="Odejít" />
+<table id="treaties-fast-leave" class="vis_tbl">
+<tr><td class="caption">Rychlo-Opustit alianci</td></tr>
+<tr><td class="c">
+
+<input class="submit confirm-leave check-afflict" data-id="171" data-afflict-action="leave-alliance" data-tag="NTRLTY" type="submit" value="Odejít"><br>
+		<p class="infotext">Při opuštění aliance ztratí vaše armáda 1/3 zkušeností<br> (díky porušení mezinárodních smluv)</p></td></tr>
+</table>
+</form>
+
+</div>
+<p class="infomsg">Čas provádění: 0.178s </p>
+    </div>
+</div>
+        <!-- CONTENT - END -->
+
+        <!-- REKLAMA - BOTTOM -->
+        <div id="advert-bottom" align="center"></div>
+        <!-- REKLAMA - BOTTOM - END -->
+    </div>
+</div>
+
+<script type="text/javascript">
+(function toolbarPoll(){
+  setTimeout(function(){
+      $.ajax({ url: "/wg/index.php?p=antimulti", success: function(data){
+          var page = $(data);
+          var i = 1;
+          var occurance = $('table#uLista').length;
+          $.each($('table#uLista'), function(index, element) {
+              if (i > (occurance - 1)) {
+		          $(element).html($('table#uLista', $(page)).html());
+              }
+		      i++;
+          });
+          toolbarPoll();
+      }, dataType: "html"});
+  }, 15000);
+})(jQuery);
+</script>
+</body>
+</html>

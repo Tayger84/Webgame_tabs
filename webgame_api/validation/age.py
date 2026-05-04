@@ -1,6 +1,6 @@
 import re
 
-def validate_age(parsed_age: dict) -> bool:
+def resolve_age(parsed_age: dict) -> bool:
     """Validate the parsed AGE represents a real game AGE
 
     Args:
@@ -19,5 +19,5 @@ def validate_age(parsed_age: dict) -> bool:
         return False
     
     # valid age contains at least  one digit
-    return bool(re.search(r"\d+", age_text))
+    return bool(re.search(r"\d+", age_text))    
     

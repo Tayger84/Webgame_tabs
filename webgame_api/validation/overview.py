@@ -1,5 +1,7 @@
 from models import Country, Age
 
+
+
 def overview_validate_structure(
     parsed_overview: dict
 ) -> tuple[bool, list[str]]:
@@ -14,6 +16,7 @@ def overview_validate_structure(
     
     if not parsed_overview:
         errors.append("No data in the inputed File")
+        return errors
         
     if not( 1 <= len(parsed_overview) <= 10 ):
         errors.append("Invalid number of countries in the file")
@@ -31,7 +34,7 @@ def overview_validate_structure(
 
 def overview_diff_validace(
     parsed_overview: dict,
-    db_overview: list[Country], # filtred to one Alliance
+    db_overview: list[Country] # filtred to one Alliance
 
 ) -> dict:
     """
@@ -64,3 +67,9 @@ def overview_diff_validace(
             changes["removed"].append(db_map[number])
             
     return changes
+
+if __name__ == "__main__":
+    with open("NTRLTY_aliance.html", "r") as overview:
+        html = overview.read()
+        
+    print(parse_alliance_overview(html))

@@ -2,49 +2,52 @@ from models import Age
 from datetime import datetime
 import re
 
+def build_new_age(parsed_age: dict) -> Age:
+    
+    return Age(
+        age_number=parsed_age["age"],
+        start_age=parsed_age["start_age"],
+        end_age=parsed_age["end_age"],
+        remain_time=parsed_age.get("rest_time"),
+        is_active=True
+    )
+
 def get_or_create_age(parsed_age: dict, db) -> Age:
     """
     Returns active Age object for current parsed age.
-    Create new Age if not exists.
+
+    Create a new Age when: 
+    - no Active Age exists,
+    - the same Age was restarted,
+    - new Age has started.
     """
-    age_number = parsed_age["age"]
+    active_age = Age.query.filter_by(is_active=True).first() # první aktivní věk, pokud existuje
     
-    age = Age.query.filter_by(age_number=age_number).first()
+    if not active_age:
+        
+        new_age = build_new_age(parsed_age)
+        db.session.add(new_age)
+        db.session.commit()
+        return new_age
+        
+    if active_age.age_number == parsed_age["age"]:
+        same_content = (active_age.start_age == parsed_age["start_age"] and active_age.end_age == parsed_age["end_age"])
+        
+        if same_content:
+            return active_age
+        else:
+            # same age label, but different content -> reset detected
+            active_age.is_active = False
+            new_age = build_new_age(parsed_age)
+            db.session.add(new_age)
+            db.session.commit()
+            return new_age
+        
     
-    if age:
-        return age
-    
-    # deactivate old ages
+    # different age label -> new Age
     Age.query.filter_by(is_active=True).update({"is_active": False})
-    
-    age = Age(
-        age_number = parsed_age["age"],
-        start_age = parsed_age["start_age"],
-        end_age = parsed_age["end_age"],
-        remain_time = parsed_age.get("rest_time"),
-        is_active = True
-    )
-    
-    db.session.add(age)
-    db.session.commit()
-    
-    return age
-
-def resolve_age(parsed_age_string: str) -> Age | None:
-    """ Checking the AGE if it is correct and active in db or its a new one or disactive 
-        return Objet | None
-    """
-    
-    age_text = parsed_age_string.strip()
-    
-    if not re.search(r"\d", age_text):
-        return None # no age, just another form of game
-    
-    age = Age.query.filter_by(age_number=age_text).first()
-    
-    if age and age.is_active:
-        return age
-    
-    return None
-
-
+    new_age = build_new_age(parsed_age)
+    db.session.add(new_age)
+    db.session.commit()  
+    return new_age
+ 

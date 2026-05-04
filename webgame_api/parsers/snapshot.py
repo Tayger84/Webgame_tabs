@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-def parse_alliance_snapshot(html_content: str) -> dict:
+def parse_alliance_table(html_content: str) -> dict:
     """
     Mining data about countries and storing them as snapshot
     

@@ -1,5 +1,22 @@
 import hashlib
-from models import Snapshot
+from models.models import Snapshot
+from services.snapshot_mapping import snapshot_map
+
+def snapshot_validate_structure(parsed_snapshot: dict) -> tuple[bool, list[str]]:
+    
+    errors = []
+    
+    if not parsed_snapshot or not snapshot_map:
+        errors.append("No data in the inputed Files")
+        return
+    
+    parsed_keys = parsed_snapshot[0].keys()
+    mapped_keys = snapshot_map.keys() # used for driving loop
+    
+    for key in mapped_keys:
+        if key not in parsed_keys:
+            pass
+    pass
 
 def prepare_snapshot_for_hash(parsed_json: dict, static_keys: set) -> str:
     """function prepared hash string for next processing

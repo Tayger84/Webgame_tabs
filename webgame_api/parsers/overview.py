@@ -1,5 +1,6 @@
 import re
 from bs4 import BeautifulSoup
+import upload
 
 def parse_alliance_overview(html_content):
     soup = BeautifulSoup(html_content, "lxml")
@@ -79,5 +80,6 @@ def parse_alliance_overview(html_content):
             "player_name": player_name,
             "regime_full": regime
         }
-    
+
     return result
+

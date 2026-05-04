@@ -22,14 +22,16 @@ class Age(db.Model):
     __tablename__ = "ages"
     """ Time axys of the Game """
     id = db.Column(db.Integer, primary_key=True)
-    age_number = db.Column(db.String(20), unique=True, nullable=False)
+    age_number = db.Column(db.String(20), nullable=False)
     start_age = db.Column(db.String(25), nullable=False)
     end_age = db.Column(db.String(25), nullable=False)
     remain_time = db.Column(db.String(30), unique=False, nullable=True)
     is_active = db.Column(db.Boolean, default=True)
     
+    snapshots = db.relationship("Snapshot", backref="age", lazy=True)
+    
 class UserAgeState(db.Model):
-    __tablename__ = "user_age_state"
+    __tablename__ = "user_age_states"
     
     id = db.Column(db.Integer, primary_key=True)
     
@@ -41,7 +43,7 @@ class UserAgeState(db.Model):
     
     age_id = db.Column(
         db.Integer, 
-        db.ForeingKey("ages.id"),
+        db.ForeignKey("ages.id"),
         nullable=False
     )
 
@@ -54,7 +56,7 @@ class UserAgeState(db.Model):
     changed_at = db.Column(db.DateTime, nullable=True)
 
     __table_args__ = (
-        db.UniqueConstraint("user_id", "age_id")
+        db.UniqueConstraint("user_id", "age_id", name = "uq_user_age")
     )
 
 class Country(db.Model):
@@ -69,7 +71,7 @@ class Country(db.Model):
     
     user_id = db.Column(
         db.Integer, 
-        db.ForeigneKey("users.id"),
+        db.ForeignKey("users.id"),
         nullable=False
     )
     
@@ -85,8 +87,9 @@ class Snapshot(db.Model):
     
     __tablename__ = "snapshots"
     id = db.Column(db.Integer, primary_key=True)
-    country_id = db.Column(db.Integer, db.ForeignKey('country.id'), nullable=False)
-    age_id = db.Column(db.Integer, db.ForeignKey('age.id'), nullable=False)
+    
+    country_id = db.Column(db.Integer, db.ForeignKey('countries.id'), nullable=False)
+    age_id = db.Column(db.Integer, db.ForeignKey('ages.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
         
     json_data = db.Column(db.JSON, nullable=False)
