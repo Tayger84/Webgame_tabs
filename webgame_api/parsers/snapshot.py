@@ -1,12 +1,13 @@
 from bs4 import BeautifulSoup
 
-def parse_alliance_table(html_content: str) -> dict:
+
+def parse_alliance_table(html_content: str) -> tuple[dict[str], list[str]]:
     """
     Mining data about countries and storing them as snapshot
     
     Return: snapshot of countries as dict
     """
-    
+    parsed_keys = []
     soup = BeautifulSoup(html_content, 'lxml')
     
     # find the header for check correct page 
@@ -25,7 +26,7 @@ def parse_alliance_table(html_content: str) -> dict:
     # create format for country list(dict{})
     countries = [ {} for _ in range(num_countries) ]
     
-    # fill rows in the cel in dictionary
+    # fill rows in the cell in dictionary
     for row in rows:
         cells = [ c.get_text(strip=True) for c in row.find_all("td") ]
         
@@ -34,9 +35,13 @@ def parse_alliance_table(html_content: str) -> dict:
         
         # header of the property of every country       
         metric_name = cells[0]
+        parsed_keys.append(metric_name) # parsed keys for validation snapshot structure
         
         # fill countries via metric_name and cells values
         for i in range(1, len(cells)):
-            countries[i-1][metric_name] = cells[i]
+            countries[i-1][metric_name] = cells[i] # duplicity matric_name - in this case the value is stored again in the same key
+        
             
-    return countries       # dictionary of the snapshot
+    return countries, parsed_keys # dictionary of the snapshot and every keys
+
+

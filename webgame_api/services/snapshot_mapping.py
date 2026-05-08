@@ -1,6 +1,6 @@
 # mainly using for translation from parsing to validation
 
-snapshot_map = {
+SNAPSHOT_MAP = {
     "Země": "country",  
     "Číslo": "number",
     "Hráč": "player",
@@ -82,6 +82,7 @@ snapshot_map = {
     "Hosp pomoc": "posledni_hospodarska_pomoc",
     "Dostal HP": "prichozich_hosp",
     "Poslal HP": "odchozich_hosp",
+    "Hum pomoc": "posledni_humanitarni_pomoc",
     "Ali Fórum": "posledni_zprava_na_aliancnim_foru",
     "Do poklad": "podil_do_pokladny",
     "Z poklad M": "vybrano_z_pokladny",
@@ -95,7 +96,11 @@ snapshot_map = {
     "Nepř kola": "nepristupna_kola"    
 }
 
-static_keys = set(snapshot_map.keys())
+keys = list(SNAPSHOT_MAP.keys())
+# print(keys)
+
+STATIC_KEYS_FOR_HASH = set(['Země', 'Číslo', 'Hráč', 'Prestiž K', 'Vojáků K', 'Tanků K', 'Stíhaček K', 'Bunkrů K', 'Mechů K', 'Agentů', 'Operací', 'Konv rak', 'Bio rak', 'Emp rak', 'Nukl rak', 'Zkuš arm K', 'Hodnost', 'Zkuš věk K', 'Sesvačenost', 'T hospod K', 'T RychSt K', 'T Obchod K', 'T HustZa K', 'T Zemědě K', 'T Továrn K', 'T Energe K', 'T vojen K', 'T SílaZb K', 'T DomTrh K', 'T Rakety K', 'T Protir K', 'T Rozvěd K', 'T Výzkum K', 'Obyvatel M', 'Peněz M', 'Jídla K', 'Energie K', 'Spokoj', 'Na trhu', '+peněz K', '+jídla', '+energie', '+vojáků', '+dílů jedn', '+technologií', 'Rozloha K', 'Vesnice K', 'Města K', 'Obchod z K', 'Farmy K', 'Laborato K', 'Továrny K', 'Kasárny K', 'Elektrár K', 'Záb stř K', 'Voj zákl K', 'Staveb fir', 'Nezastav K', 'Ruiny K', 'B vesnice', 'B farmy', 'B laborat', 'B továrny', 'B kasárny', 'B elektrár', 'B voj zákl', 'B peníze', 'B max hosp', 'B max voj', 'B efekt hosp', 'B útok', 'B obrana', 'B koloniz', 'B žoldy', 'Logout', 'Rozvoj zač', 'Hosp pomoc', 'Dostal HP', 'Poslal HP', 'Ali Fórum', 'Do poklad', 'Z poklad M', 'Vesmír', 'Utop spok K', 'Android', 'UFO', 'Emb Hlas', 'Odehr kola', 'Volná kola', 'Nepř kola'])
+# print(STATIC_KEYS_FOR_HASH)
 
 
 # Země | Číslo | Hráč | Prestiž K | Vojáků K | Tanků K | Stíhaček K | Bunkrů K | Mechů K | Agentů | Operací | Konv rak |

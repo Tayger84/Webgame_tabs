@@ -58,6 +58,12 @@ class UserAgeState(db.Model):
     __table_args__ = (
         db.UniqueConstraint("user_id", "age_id", name = "uq_user_age")
     )
+    
+class Alliance(db.Model):
+    pass
+
+class AllianceRoasterHash(db.Model):
+    pass
 
 class Country(db.Model):
     __tablename__ = "countries"

@@ -1,22 +1,36 @@
 import hashlib
-from models.models import Snapshot
-from services.snapshot_mapping import snapshot_map
+#from models.models import Snapshot
 
-def snapshot_validate_structure(parsed_snapshot: dict) -> tuple[bool, list[str]]:
+def snapshot_validate_structure(parsed_keys: list[str], STATIC_KEYS: list[str]) -> tuple[bool, list[str]]:
+    """
+    Comparing parsed keys with expected keys for the structure confirmation
+    Args:
+        parsed_keys (set[str]): keys for check
+        expected_keys (set[str]): expected keys
+
+    Returns:
+        tuple[bool, list[str]]: _description_
+    """
     
     errors = []
+    if not parsed_keys:
+        errors.append(f"No parsed keys for comparing")
+        return False, errors
+    if not expected_keys:
+        errors.append(f"No expected keys for comparing")
+        return False, errors
     
-    if not parsed_snapshot or not snapshot_map:
-        errors.append("No data in the inputed Files")
-        return
+    missing_keys = expected_keys - parsed_keys
+    extra_keys = parsed_keys - expected_keys
     
-    parsed_keys = parsed_snapshot[0].keys()
-    mapped_keys = snapshot_map.keys() # used for driving loop
-    
-    for key in mapped_keys:
-        if key not in parsed_keys:
-            pass
-    pass
+    if missing_keys:
+        errors.append(f"Missing keys in parsed data: {sorted(missing_keys)}")
+
+    if extra_keys:
+        errors.append(f"Extra keys in parsed data: {sorted(extra_keys)}")        
+        
+    return not errors, errors
+
 
 def prepare_snapshot_for_hash(parsed_json: dict, static_keys: set) -> str:
     """function prepared hash string for next processing
@@ -72,3 +86,4 @@ def snapshot_validate(
     }
     
     return new_hash not in existing_hashes
+
