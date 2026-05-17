@@ -1,7 +1,7 @@
 import hashlib
 #from models.models import Snapshot
 
-def snapshot_validate_structure(parsed_keys: list[str], STATIC_KEYS: list[str]) -> tuple[bool, list[str]]:
+def snapshot_validate_structure(parsed_keys: set[str], expected_keys: set[str]) -> tuple[bool, list[str]]:
     """
     Comparing parsed keys with expected keys for the structure confirmation
     Args:

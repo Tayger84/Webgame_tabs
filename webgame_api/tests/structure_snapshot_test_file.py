@@ -31,7 +31,7 @@ with open("upload/NTRLTY_aliance_detaily.html", "r") as snapshot:
 parsed_snapshot, snapshot_parsed_keys = parse_alliance_table(html) # one of snapshot of the overview alliance
         
 snapshot_expected_keys = set(SNAPSHOT_MAP.keys()) # get keys for structure check of the snapshost
-
+print(parsed_snapshot)
      
 is_valid, snapshost_structure_errors = snapshot_validate_structure(set(snapshot_parsed_keys), snapshot_expected_keys)
         

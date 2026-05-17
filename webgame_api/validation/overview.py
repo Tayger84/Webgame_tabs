@@ -1,7 +1,6 @@
 from models import Country, Age
 
 
-
 def overview_validate_structure(
     parsed_overview: dict
 ) -> tuple[bool, list[str]]:
@@ -22,12 +21,13 @@ def overview_validate_structure(
         errors.append("Invalid number of countries in the file")
     
         
-    for country in parsed_overview.values():
-        if not isinstance(country, dict):
+    for country, country_keys in parsed_overview.items():
+
+        if not isinstance(country_keys, dict):
             errors.append("Incorrect country format")
         for key in mandatory_keys:
-            if key not in country:
-                errors.append(f'Missing mandatory key: {key}')
+            if key not in country_keys:
+                errors.append(f'Country: {country}. Missing mandatory key: {key}')
         
     return not errors, errors
     

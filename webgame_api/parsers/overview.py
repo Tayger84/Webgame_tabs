@@ -1,8 +1,8 @@
 import re
 from bs4 import BeautifulSoup
-import upload
+# import upload
 
-def parse_alliance_overview(html_content):
+def parse_alliance_overview(html_content) -> list[dict]:
     soup = BeautifulSoup(html_content, "lxml")
     
     # find the header for check correct page
@@ -78,6 +78,7 @@ def parse_alliance_overview(html_content):
             "alliance": alliance_name,
             "country_name": country_name,
             "player_name": player_name,
+            "regime_short": regime_short,
             "regime_full": regime
         }
 

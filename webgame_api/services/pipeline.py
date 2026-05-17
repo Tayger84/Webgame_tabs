@@ -36,16 +36,17 @@ def sync_pipeline(user_id, alliance_id, db, overview_html = None, snapshot_html 
     # 1) Parsed input data from stored html, one of inputs is necessary for proceeding 
     if overview_html:
         parsed_overview = parse_alliance_overview(overview_html) # parsing of alliance overview
-        overview_errors = overview_validate_structure(parsed_overview)
+        is_valid_overview, overview_structure_errors = overview_validate_structure(parsed_overview)
         
         
     if snapshot_html:
         parsed_snapshot, snapshot_parsed_keys = parse_alliance_table(snapshot_html) # one of snapshot of the overview alliance
         
-        snapshot_expected_keys = set(SNAPSHOT_MAP.keys()) # get keys for structure check of the snapshost
-        is_valid, snapshost_structure_errors = snapshot_validate_structure(set(snapshot_parsed_keys), snapshot_expected_keys)
+        snapshot_expected_keys = SNAPSHOT_MAP.keys() # get keys for structure check of the snapshost
+        
+        is_valid_snapshot, snapshost_structure_errors = snapshot_validate_structure(set(snapshot_parsed_keys), set(snapshot_expected_keys))
     
-    if not is_valid:
+    if not is_valid_overview:
         pass        
     
 """        
