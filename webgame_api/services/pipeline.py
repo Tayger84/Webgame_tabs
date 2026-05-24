@@ -11,6 +11,7 @@ from validation.user import user_validate
 
 #from models import models
 from age_services import get_or_create_age
+from alliance_service import get_country_numbers_from_overview, get_country_numbers_from_snapshot
 
 from snapshot_mapping import SNAPSHOT_MAP
 
@@ -24,20 +25,21 @@ def sync_pipeline(user_id, alliance_id, db, overview_html = None, snapshot_html 
     
     # 0) something must be transmited
     if not overview_html and not snapshot_html:
-        return PipelineResult(ok=False, errors=["No input HTML provided(overview_html/snaphost_html)."])
+        return PipelineResult(ok=False, errors=["No input HTML provided(overview_html and snaphost_html)."])
     
     parsed_overview = None
     parsed_snapshot = None
     snapshot_parsed_keys = None
+    
+    is_valid_overview = True
+    is_valid_snapshot = True
 
-    overview_errors = None
-    snapshost_structure_errors = None
+  
     
     # 1) Parsed input data from stored html, one of inputs is necessary for proceeding 
     if overview_html:
         parsed_overview = parse_alliance_overview(overview_html) # parsing of alliance overview
         is_valid_overview, overview_structure_errors = overview_validate_structure(parsed_overview)
-        
         
     if snapshot_html:
         parsed_snapshot, snapshot_parsed_keys = parse_alliance_table(snapshot_html) # one of snapshot of the overview alliance
@@ -45,9 +47,16 @@ def sync_pipeline(user_id, alliance_id, db, overview_html = None, snapshot_html 
         snapshot_expected_keys = SNAPSHOT_MAP.keys() # get keys for structure check of the snapshost
         
         is_valid_snapshot, snapshost_structure_errors = snapshot_validate_structure(set(snapshot_parsed_keys), set(snapshot_expected_keys))
+          
+    
+    # 2) alliance check/creation - parsed_overview, parsed_snapshot
     
     if not is_valid_overview:
-        pass        
+        return PipelineResult(ok=False, errors=overview_structure_errors)
+
+    if not is_valid_snapshot:
+        return PipelineResult(ok=False, errors=snapshost_structure_errors)
+
     
 """        
     # 2) Age - gets number of AGE for storing in database

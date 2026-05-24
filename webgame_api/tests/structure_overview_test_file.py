@@ -52,4 +52,4 @@ parsed_overview = parse_alliance_overview(html)
 is_valid, errors = overview_validate_structure(parsed_overview)
 
 countries = get_country_numbers_from_overview(parsed_overview)
-print(countries)
+print(parsed_overview)

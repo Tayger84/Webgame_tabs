@@ -1,3 +1,5 @@
+import ast
+from pathlib import Path
 
 def get_country_numbers_from_overview(json_data: dict) -> list[int]:
     """
@@ -29,5 +31,17 @@ def get_country_numbers_from_snapshot(json_data: list) -> list[int]:
 
     return alliance_countries_numbers
 
-def get_county_numbers_from_post() -> list[int]:
-    pass
+
+# Test alliance creation based on country numbers
+
+TEST_DIR = Path(__file__).resolve().parent
+file_path = TEST_DIR / "upload" / "overview_data.txt"
+
+with file_path.open("r", encoding="utf-8") as f:
+    
+    file_data = f.read()
+    
+data = ast.literal_eval(file_data)
+
+list_of_countries = get_country_numbers_from_overview(data)
+print(list_of_countries)
