@@ -51,11 +51,14 @@ def sync_pipeline(user_id, alliance_id, db, overview_html = None, snapshot_html 
     
     # 2) alliance check/creation - parsed_overview, parsed_snapshot
     
+    # check of previous point
     if not is_valid_overview:
         return PipelineResult(ok=False, errors=overview_structure_errors)
 
     if not is_valid_snapshot:
         return PipelineResult(ok=False, errors=snapshost_structure_errors)
+    
+    
 
     
 """        

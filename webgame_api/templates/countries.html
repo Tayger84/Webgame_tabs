@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Země | Webgame Tracker{% endblock %}
+
+{% block content %}
+
+<h2>Země</h2>
+
+<section class="panel">
+    {% if countries %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Číslo</th>
+                    <th>Název</th>
+                    <th>Hráč</th>
+                    <th>Aliance</th>
+                    <th>Režim</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries %}
+                    <tr>
+                        <td>#{{ country.number }}</td>
+                        <td>{{ country.name }}</td>
+                        <td>{{ country.player }}</td>
+                        <td>{{ country.alliance }}</td>
+                        <td>{{ country.regime }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="muted">Zatím nejsou uložené žádné země.</p>
+    {% endif %}
+</section>
+
+{% endblock %}

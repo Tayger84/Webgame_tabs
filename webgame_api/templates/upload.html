@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Upload page | Webgame Tracker{% endblock %}
+
+{% block content %}
+<h2>Nahrát HTML soubory</h2>
+
+<section class="panel">
+    <form method="post" enctype="multipart/form-data">
+        <label for="html_file">Vyber HTML soubor:</label>
+
+        <input 
+        type="file"
+        id="html_file"
+        name="html_file"
+        accept=".html,.htm,.txt">
+
+        <button type="submit">Nahrát</button>
+
+    </form>
+</section>
+
+{% if parsed_overview %}
+    <section class="panel">
+        <h3>Výsledek parseru Overview:</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Aliance: {{ alliance_name.0.alliance }}</th>
+                </tr>
+                <tr>
+                    <th>Číslo země</th>
+                    <th>Název země</th>
+                    <th>Režim</th>
+                    <th>Hráč</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for country_number, country in parsed_overview.items() %}
+                    <tr>
+                        <td>
+                            {{ country_number }}
+                        </td>
+                        <td>
+                            {{ country.country_name }}
+                        </td>
+                        <td>
+                            {{ country.regime_full }}
+                        </td>
+                        <td>
+                            {{ country.player_name }}
+                        </td>
+                    </tr>
+                
+                {% endfor %}
+
+            </tbody>
+        </table>
+        
+    </section>
+{% endif %}
+
+
+
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Webgame Tracker{% endblock %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<section class="cards">
+    <div class="card">
+        <h2>{{ stats.users }}</h2>
+        <p>Uživatelé</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ stats.ages }}</h2>
+        <p>Věky</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ stats.countries }}</h2>
+        <p>Země</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ stats.snapshots }}</h2>
+        <p>Snapshoty</p>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Aktivní věk</h2>
+
+    {% if active_age %}
+        <p><strong>{{ active_age.age_number }}</strong></p>
+        <p>Start: {{ active_age.start_age }}</p>
+        <p>Konec: {{ active_age.end_age }}</p>
+        <p>Zbývá: {{ active_age.remain_time }}</p>
+    {% else %}
+        <p class="muted">Zatím není uložený žádný aktivní věk.</p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Poslední snapshoty</h2>
+
+    {% if latest_snapshots %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Země ID</th>
+                    <th>Věk ID</th>
+                    <th>Vytvořeno</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for snapshot in latest_snapshots %}
+                    <tr>
+                        <td>{{ snapshot.id }}</td>
+                        <td>{{ snapshot.country_id }}</td>
+                        <td>{{ snapshot.age_id }}</td>
+                        <td>{{ snapshot.created_at }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="muted">Zatím nejsou uložené žádné snapshoty.</p>
+    {% endif %}
+</section>
+
+{% endblock %}
